@@ -10,14 +10,14 @@ Methodik: 5 Messungen je Seite (curl, GET), Auswertung als Mittelwert. Formulare
 
 | Seite | TTFB Ø | TTFB min/max | Schwankung (σ) | Ladezeit HTML Ø | HTML-Groesse | HTTP | Redirects |
 |---|---|---|---|---|---|---|---|
-| Startseite | 2528 ms | 2293 ms / 3249 ms | 364 ms | 2636 ms | 31.3 KB | 2 | 0 |
-| Ausgabestellen-Uebersicht | 2633 ms | 2034 ms / 3377 ms | 530 ms | 2743 ms | 24.4 KB | 2 | 0 |
-| Bewerbungsformular | 3170 ms | 2283 ms / 3571 ms | 455 ms | 3283 ms | 27.3 KB | 2 | 0 |
+| Startseite | 2458 ms | 2044 ms / 3477 ms | 517 ms | 2571 ms | 31.3 KB | 2 | 0 |
+| Ausgabestellen-Uebersicht | 2490 ms | 2068 ms / 3269 ms | 443 ms | 2600 ms | 24.4 KB | 2 | 0 |
+| Bewerbungsformular | 2691 ms | 1947 ms / 3331 ms | 600 ms | 2800 ms | 27.3 KB | 2 | 0 |
 
 ### Startseite
-`https://www.tischlein-deckdich.at/` - Status 200, Server-IP 127.0.0.1, TLS-Handshake Ø 576 ms
+`https://www.tischlein-deckdich.at/` - Status 200, Server-IP 127.0.0.1, TLS-Handshake Ø 457 ms
 
-Einzelmessungen TTFB: 2354 ms, 2293 ms, 2448 ms, 3249 ms, 2298 ms
+Einzelmessungen TTFB: 2254 ms, 2312 ms, 2044 ms, 2202 ms, 3477 ms
 
 **Header-Auswertung**
 
@@ -66,7 +66,7 @@ Groesste Einzelressourcen:
 
 **Befunde**
 
-- **Was gemessen/gefunden:** TTFB Ø 2528 ms
+- **Was gemessen/gefunden:** TTFB Ø 2458 ms
   **Risiko:** Hoch - der Server braucht vor dem ersten Byte laenger als die Zeitspanne, die Google fuer den gesamten LCP als 'gut' ansetzt.
   **Empfehlung:** Vorrangig beheben: Full-Page-Cache aktivieren, Hosting-Ressourcen und PHP-Laufzeit pruefen, ggf. CDN vorschalten.
 
@@ -84,9 +84,9 @@ Groesste Einzelressourcen:
 
 
 ### Ausgabestellen-Uebersicht
-`https://www.tischlein-deckdich.at/ausgabestellen/` - Status 200, Server-IP 127.0.0.1, TLS-Handshake Ø 462 ms
+`https://www.tischlein-deckdich.at/ausgabestellen/` - Status 200, Server-IP 127.0.0.1, TLS-Handshake Ø 563 ms
 
-Einzelmessungen TTFB: 3377 ms, 2034 ms, 3136 ms, 2433 ms, 2185 ms
+Einzelmessungen TTFB: 3269 ms, 2171 ms, 2068 ms, 2687 ms, 2257 ms
 
 **Header-Auswertung**
 
@@ -135,7 +135,7 @@ Groesste Einzelressourcen:
 
 **Befunde**
 
-- **Was gemessen/gefunden:** TTFB Ø 2633 ms
+- **Was gemessen/gefunden:** TTFB Ø 2490 ms
   **Risiko:** Hoch - der Server braucht vor dem ersten Byte laenger als die Zeitspanne, die Google fuer den gesamten LCP als 'gut' ansetzt.
   **Empfehlung:** Vorrangig beheben: Full-Page-Cache aktivieren, Hosting-Ressourcen und PHP-Laufzeit pruefen, ggf. CDN vorschalten.
 
@@ -153,9 +153,9 @@ Groesste Einzelressourcen:
 
 
 ### Bewerbungsformular
-`https://www.tischlein-deckdich.at/volunteer-bewerbung-bei-fahrer-in/` - Status 200, Server-IP 127.0.0.1, TLS-Handshake Ø 606 ms
+`https://www.tischlein-deckdich.at/volunteer-bewerbung-bei-fahrer-in/` - Status 200, Server-IP 127.0.0.1, TLS-Handshake Ø 509 ms
 
-Einzelmessungen TTFB: 3353 ms, 3263 ms, 2283 ms, 3381 ms, 3571 ms
+Einzelmessungen TTFB: 3227 ms, 2258 ms, 1947 ms, 3331 ms - **1 von 5 Messlaeufen sind am Netzweg gescheitert und fehlen hier.**
 
 **Header-Auswertung**
 
@@ -179,13 +179,13 @@ Einzelmessungen TTFB: 3353 ms, 3263 ms, 2283 ms, 3381 ms, 3571 ms
 
 **Kompression:** `content-encoding: gzip` - komprimiert 27.3 KB vs. unkomprimiert 135.2 KB (Einsparung 80 %)
 
-**Uebertragene Ressourcen:** 48 Sub-Ressourcen, zusammen 319.1 KB (zzgl. 27.3 KB HTML)
+**Uebertragene Ressourcen:** 48 Sub-Ressourcen, zusammen 270.7 KB (zzgl. 27.3 KB HTML)
 
 | Typ | Anzahl | Summe |
 |---|---|---|
-| CSS | 29 | 81.5 KB |
+| CSS | 29 | 74.0 KB |
 | IMG | 1 | 32.4 KB |
-| JS | 18 | 205.2 KB |
+| JS | 18 | 164.4 KB |
 
 Groesste Einzelressourcen:
 
@@ -194,17 +194,17 @@ Groesste Einzelressourcen:
 | 56.3 KB | application/javascript | _nicht gesetzt_ | `front.multi.min.js?ver=1.57.2` |
 | 32.4 KB | image/png | _nicht gesetzt_ | `cropped-Logo.png` |
 | 29.7 KB | application/javascript | _nicht gesetzt_ | `jquery.min.js?ver=3.7.1` |
-| 27.8 KB | application/javascript | _nicht gesetzt_ | `inputmask.min.js?ver=1.57.2` |
 | 27.1 KB | application/javascript | _nicht gesetzt_ | `jquery.inputmask.min.js?ver=1.57.2` |
 | 16.9 KB | text/css | _nicht gesetzt_ | `main.min.css?ver=2.1.44` |
 | 16.9 KB | text/html; charset=UTF-8 | no-cache, must-revalidate, max-age=0, no-store, private | `style-11244.css?ver=1788013605` |
 | 12.7 KB | text/css | _nicht gesetzt_ | `frontend_blocks.css?ver=3.20.1` |
 | 11.6 KB | application/javascript | _nicht gesetzt_ | `intlTelInput.min.js?ver=1.57.2` |
 | 9.3 KB | application/javascript | _nicht gesetzt_ | `main.js?ver=2.1.44` |
+| 9.0 KB | application/javascript | _nicht gesetzt_ | `scripts.js?ver=2.7.13` |
 
 **Befunde**
 
-- **Was gemessen/gefunden:** TTFB Ø 3170 ms
+- **Was gemessen/gefunden:** TTFB Ø 2691 ms
   **Risiko:** Hoch - der Server braucht vor dem ersten Byte laenger als die Zeitspanne, die Google fuer den gesamten LCP als 'gut' ansetzt.
   **Empfehlung:** Vorrangig beheben: Full-Page-Cache aktivieren, Hosting-Ressourcen und PHP-Laufzeit pruefen, ggf. CDN vorschalten.
 
@@ -538,8 +538,8 @@ H1: 1 | H2: 1 | H3: 0
 ```
 issuer=O = Anthropic, CN = Egress Gateway SDS Issuing CA (production)
 subject=CN = *.tischlein-deckdich.at
-notBefore=Sep 10 18:00:56 2026 GMT
-notAfter=Oct 10 18:01:56 2026 GMT
+notBefore=Sep 10 18:17:44 2026 GMT
+notAfter=Oct 10 18:18:44 2026 GMT
 X509v3 Subject Alternative Name: 
     DNS:www.tischlein-deckdich.at
 CONNECTION ESTABLISHED
